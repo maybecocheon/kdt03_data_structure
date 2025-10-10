@@ -22,8 +22,20 @@ class Point3 {
 		iy = rndy;
 	}
 	
-	//게터, 세터 생성
+	//게터 생성
+	public int getIx() {
+		return ix;
+	}
 	
+	public int getIy() {
+		return iy;
+	}
+	
+	//toString 오버라이딩
+	@Override
+	public String toString() {
+		return "(" + ix + ", " + iy + ")";
+	}
 }
 
 //int형 고정 길이 큐
@@ -78,7 +90,7 @@ public objectQueue2(int maxlen) {
 		if (isEmpty()) {
 			throw new EmptyQueueException();
 		} else {
-			return que[front - 1];
+			return que[front];
 		}
 	}
 
@@ -94,29 +106,36 @@ public objectQueue2(int maxlen) {
 
 //--- 큐에 쌓여 있는 데이터 개수를 반환 ---//
 	public int size() {
-		return rear;
+		return rear - front;
 	}
 
 //--- 큐가 비어있는가? ---//
 	public boolean isEmpty() {
 		//front = 0, rear = 0
 		//front = capacity, rear = capacity
-		if ((front == 0 && rear == 0) || (front == capacity && rear == capacity)) {
-			
-		}
-		
+		if (front == rear) {
+			return true;
+		} else
+			return false;
 	}
 
 //--- 큐가 가득 찼는가? ---//
 	public boolean isFull() {
 		//front = 0, rear = capacity
-
+		if (front == 0 && rear >= capacity) {
+			return true;
+		} else
+			return false;
 	}
 
 //--- 큐 안의 모든 데이터를 프런트 → 리어 순으로 출력 ---//
 	public void dump() {
-		for (int i = 0; i < rear; i++) {
-			System.out.printf("(%s, %s)", que[i].);
+		if (isEmpty()) {
+			throw new EmptyQueueException();
+		} else {
+			for (int i = front; i < rear; i++) {
+				System.out.print(que[i] + " ");
+			}
 		}
 	}
 }
@@ -138,16 +157,17 @@ public class train_실습4_03_3객체선형큐_배열 {
 				break;
 			}
 			
+			rndx = random.nextInt(20);
+			rndy = random.nextInt(20);
+			
+			p = new Point3(rndx, rndy);
+			
 			switch (menu) {
 			case 1: // 인큐
-
-				rndx = random.nextInt(20);
-				rndy = random.nextInt(20);
 				
-				System.out.print("입력데이터: (" + rndx + ", " + rndy + ")");
-				p = new Point3(rndx, rndy);
 				try {
 					oq.enque(p);
+					System.out.print("입력데이터: (" + rndx + ", " + rndy + ")");
 				} catch(objectQueue2.OverflowQueueException e) {
 					System.out.println("stack이 가득 차 있습니다.");
 				}
@@ -172,7 +192,11 @@ public class train_실습4_03_3객체선형큐_배열 {
 				break;
 
 			case 4: // 덤프
-				oq.dump();
+				try {
+					oq.dump();
+				} catch (objectQueue2.EmptyQueueException e) {
+					System.out.println("큐가 비어 있습니다.");
+				}
 				break;
 			default:
 				break;

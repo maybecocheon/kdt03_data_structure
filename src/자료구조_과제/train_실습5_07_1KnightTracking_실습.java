@@ -2,6 +2,8 @@ package 자료구조_과제;
 
 import java.util.Stack;
 
+//큐를 사용해서 체스판 더 작게 만들어서 풀기
+
 /*
  * Knight's Tour 문제는 체스판에서 나이트(Knight) 말이 모든 체스판의 칸을 한 번씩만 방문하면서
  * 체스판의 모든 방을 방문하면 종료. 
