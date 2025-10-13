@@ -2,8 +2,6 @@ package 자료구조_과제;
 
 import java.util.Stack;
 
-// 기사의 여행에서는 백트래킹과 경계 조건이 가장 중요함!!!!!!!!
-
 //큐를 사용해서 체스판 더 작게 만들어서 풀기
 
 /*
@@ -24,16 +22,8 @@ import java.util.Stack;
 
 // enum knightMoves {NW, NE, EN, ES, SE, SW, WW, WN} // knight가 움직일 때의 차례(순서)
 
-//다음 이동할 위치
-//위치 정보를 저장하기 위한 객체
-class Offsets4 { 
-	int a;
-	int b;
-	public Offsets4(int a, int b) {
-		this.a = a; this.b = b;
-	}
-}
-public class train_실습5_07_1KnightTracking_실습 {
+
+public class train_실습5_07_2KnightTracking_실습_recur {
 	static Offsets4[] moves = new Offsets4[8];//static을 선언하는 이유를 알아야 한다
     static final int N = 6; // 체스판 크기
 
@@ -66,69 +56,32 @@ public class train_실습5_07_1KnightTracking_실습 {
         return (x >= 0 && x < N && y >= 0 && y < N && board[x][y] == -1);
     }
 
-    // 나이트 투어 알고리즘 (비재귀적으로 하려면 스택 사용)
-    private static boolean solveKnightTracking(int startX, int startY) {
-    	for (int ia = 0; ia < 8; ia++) {
-    		moves[ia] = new Offsets4(0, 0); //배열에 Offsets4 객체를 치환해야 한다.
-    	} 
-    	// 나이트가 이동할 수 있는 8가지 방향
-    	moves[0].a = -2;	moves[0].b = -1;//NW으로 이동
-    	moves[1].a = -2;	moves[1].b = 1;//NE
-    	moves[2].a = -1;	moves[2].b = 2;//EN
-    	moves[3].a = 1;		moves[3].b = 2;//ES
-    	moves[4].a = 2;		moves[4].b = 1;//SE
-    	moves[5].a = 2;		moves[5].b = -1;//SW
-    	moves[6].a = 1;		moves[6].b = -2;//WS
-    	moves[7].a = -1;	moves[7].b = -2;//WN
-       
-        Stack<Point> stack = new Stack<>();
-
-        // 시작 위치를 스택에 푸시
-        stack.push(new Point(startX, startY, 0));
-        board[startX][startY] = 0; // knight 채워졌기 때문에 0으로 바꿔 줌
-        int moveCount = 1; // 다음 이동 번호
-
-        while (!stack.isEmpty()) {
-        	Point current = stack.peek(); //현재 위치 확인(pop 하지 않음)
-        	
-        	// 기저 조건
-        	// 전부 다 돌면 값 반환
-        	if (moveCount == N * N) {
-        		return true;
+    // 나이트 투어 알고리즘 (재귀)
+    private static boolean solveKnightTrackingRecursive(int startX, int startY, int moveCount) {
+    	// 기저 조건
+    	if (moveCount == N * N) {
+    		return true;
+    	}
+    	
+        // 나이트가 이동할 수 있는 8가지 방향
+        for (int i = 0; i < 8; i++) {
+    		int nextX = startX + moves[i].a;
+    		int nextY = startY + moves[i].b;
+    		
+    		// 8가지 방향으로 나이트 이동 시도
+    		if (isSafe(nextX, nextY)) {
+    			board[nextX][nextY] = moveCount;
+    			if (solveKnightTrackingRecursive(nextX, nextY, moveCount + 1)) {
+    				return true;
         	}
-        	
-        	boolean moved = false; //flag 값
-        	
-        	for (int i = current.moveToward; i < 8; i++) {
-        		int nextX = current.x + moves[i].a;
-        		int nextY = current.y + moves[i].b;
-        		
-        		// 8가지 방향으로 나이트 이동 시도
-        		if (isSafe(nextX, nextY)) {
-        			current.moveToward = i + 1;
-        			board[nextX][nextY] = moveCount;
-        			stack.push(new Point(nextX, nextY, 0));
-        			moveCount++;
-        			moved = true;
-        			break;
-            	}
-        	}
-        	
-            // 더 이상 이동할 곳이 없을 경우
-        	// safe하지 않다는 뜻
-        	if (!moved) {
-        		Point backtrack = stack.pop();
-        		if (backtrack.x == startX && backtrack.y == startY) {
-        			board[backtrack.x][backtrack.y] = -1;
-        			return false;
-        		}
-        		board[backtrack.x][backtrack.y] = -1;
-    			moveCount--;
-        	}
-        }
+    		board[nextX][nextY] = -1;
+    	}	
+     }
         return false; // 해결하지 못함
-    }
-
+   }
+    
+    // 재귀는 1) 모든 경계 조건 완화 2) 반복문처럼 움직임
+    
     // 결과 출력
     private static void showTracking() {
     	System.out.println("기사의 여행 경로 : ");
@@ -138,6 +91,33 @@ public class train_실습5_07_1KnightTracking_실습 {
     		}
     		System.out.println();
     	}
+    }
+    
+    private static void initializeMoves() {
+		for (int ia = 0; ia < 8; ia++) {
+    		moves[ia] = new Offsets4(0, 0); //배열에 Offsets4 객체를 치환해야 한다. for문 여기서 닫힌 거임.
+    	} 
+    	moves[0].a = -2;	moves[0].b = -1;//NW으로 이동
+    	moves[1].a = -2;	moves[1].b = 1;//NE
+    	moves[2].a = -1;	moves[2].b = 2;//EN
+    	moves[3].a = 1;		moves[3].b = 2;//ES
+    	moves[4].a = 2;		moves[4].b = 1;//SE
+    	moves[5].a = 2;		moves[5].b = -1;//SW
+    	moves[6].a = 1;		moves[6].b = -2;//WS
+    	moves[7].a = -1;	moves[7].b = -2;//WN
+	}
+    
+    private static boolean solveKnightTracking(int startX, int startY) {
+    	//초기화
+    	initializeMoves();
+    	board[startX][startY] = 0;
+    	//재귀식
+    	if (solveKnightTrackingRecursive(startX, startY, 1)) {
+    		//종료 조건
+    		return true;
+    	}
+    	//종료 조건
+    	return false;
     }
 
     public static void main(String[] args) {

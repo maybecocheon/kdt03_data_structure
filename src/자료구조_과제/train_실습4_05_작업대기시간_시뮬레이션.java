@@ -49,17 +49,17 @@ import java.util.Scanner;
 
 //(작업 이름, 시간)을 형식으로 한 작업 클래스 생성
 class Operation {
-	private String name;
+	private char name;
 	private int time;
 	
 	//생성자 생성
-	public Operation (String name, int time) {
+	public Operation (char name, int time) {
 		this.name = name;
 		this.time = time;
 	}
 	
 	//게터, 세터 생성
-	public String getName() {
+	public char getName() {
 		return name;
 	}
 	public int getTime() {
@@ -159,25 +159,14 @@ public class train_실습4_05_작업대기시간_시뮬레이션 {
 		//두 번째 줄에 각 작업의 이름과 남은 시간이 (작업 이름, 시간)의 형식으로 주어집니다.		
 		//큐에 작업이 배치됨 => 인큐
 		// System.out.println("각 작업의 이름을 입력하세요.");
-		int time = rd.nextInt(1, 100);
-		Operation opt = new Operation("A", time);
-		tqueue.enque(opt);
-		System.out.println("배치된 작업은 " + opt + "입니다.");
-		
-		time = rd.nextInt(1, 100);
-		opt = new Operation("B", time);
-		tqueue.enque(opt);
-		System.out.println("배치된 작업은 " + opt + "입니다.");
-		
-		time = rd.nextInt(1, 100);
-		opt = new Operation("C", time);
-		tqueue.enque(opt);
-		System.out.println("배치된 작업은 " + opt + "입니다.");
-		
-		time = rd.nextInt(1, 100);
-		opt = new Operation("D", time);
-		tqueue.enque(opt);
-		System.out.println("배치된 작업은 " + opt + "입니다.");
+		char name = 'A';
+		int time;
+		for (int i = 0; i < 4; i++) {
+			time = rd.nextInt(1, 100);
+			Operation opt = new Operation((char)(name + i), time);
+			tqueue.enque(opt);
+			System.out.println("배치된 작업은 " + opt + "입니다.");
+		}
 		
 		
 		int currentTime = 0;
