@@ -11,7 +11,7 @@ interface MaxHeap {
 
 class Heap implements MaxHeap {
 	final int heapSize = 100;
-	private int[] heap;
+	private int[] data; // data를 넣는 힙 배열
 	private int n; // MaxHeap의 현재 입력된 element 개수
 	private int MaxSize; // Maximum allowable size of MaxHeap
 	
@@ -19,7 +19,7 @@ class Heap implements MaxHeap {
 
 	}
 
-	public void display() {//heap 배열을 출력한다. 배열 인덱스와 heap[]의 값을 출력한다.
+	public void display() {//heap 배열을 출력한다. 배열 인덱스와 data[]의 값을 출력한다.
 		int i;
 	
 	}
