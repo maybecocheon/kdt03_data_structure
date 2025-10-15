@@ -34,10 +34,12 @@ class Offsets4 {
 	}
 }
 public class train_실습5_07_1KnightTracking_실습 {
+	// 위치 정보 저장하는 객체 생성
 	static Offsets4[] moves = new Offsets4[8];//static을 선언하는 이유를 알아야 한다
-    static final int N = 6; // 체스판 크기
+	// 체스판 크기 지정
+	static final int N = 6; 
 
-    // 체스판 배열
+    // 체스판 배열 생성
     private static int[][] board = new int[N][N];
 
     // Point 객체로 나이트의 현재 좌표를 저장
@@ -81,6 +83,7 @@ public class train_실습5_07_1KnightTracking_실습 {
     	moves[6].a = 1;		moves[6].b = -2;//WS
     	moves[7].a = -1;	moves[7].b = -2;//WN
        
+    	// 현재 좌표를 저장할 스택 생성
         Stack<Point> stack = new Stack<>();
 
         // 시작 위치를 스택에 푸시
