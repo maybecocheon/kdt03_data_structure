@@ -92,32 +92,32 @@ public class train_실습5_07_1KnightTracking_실습 {
         int moveCount = 1; // 다음 이동 번호
 
         while (!stack.isEmpty()) {
-        	Point current = stack.peek(); //현재 위치 확인(pop 하지 않음)
+        		Point current = stack.peek(); //현재 위치 확인(pop 하지 않음)
         	
-        	// 기저 조건
-        	// 전부 다 돌면 값 반환
-        	if (moveCount == N * N) {
-        		return true;
-        	}
+        		// 기저 조건
+        		// 전부 다 돌면 값 반환
+        		if (moveCount == N * N) {
+        			return true;
+        		}
         	
-        	boolean moved = false; //flag 값
+        		boolean moved = false; //flag 값
         	
-        	for (int i = current.moveToward; i < 8; i++) {
-        		int nextX = current.x + moves[i].a;
-        		int nextY = current.y + moves[i].b;
+        		for (int i = current.moveToward; i < 8; i++) {
+        			int nextX = current.x + moves[i].a;
+        			int nextY = current.y + moves[i].b;
         		
-        		// 8가지 방향으로 나이트 이동 시도
-        		if (isSafe(nextX, nextY)) {
-        			current.moveToward = i + 1;
-        			board[nextX][nextY] = moveCount;
-        			stack.push(new Point(nextX, nextY, 0));
-        			moveCount++;
-        			moved = true;
-        			break;
-            	}
-        	}
+        			// 8가지 방향으로 나이트 이동 시도
+        			if (isSafe(nextX, nextY)) {
+        				current.moveToward = i + 1;
+        				board[nextX][nextY] = moveCount;
+        				stack.push(new Point(nextX, nextY, 0));
+        				moveCount++;
+        				moved = true;
+        				break;
+        			}
+        		}
         	
-            // 더 이상 이동할 곳이 없을 경우
+         // 더 이상 이동할 곳이 없을 경우
         	// safe하지 않다는 뜻
         	if (!moved) {
         		Point backtrack = stack.pop();
