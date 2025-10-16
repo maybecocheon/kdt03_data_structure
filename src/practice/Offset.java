@@ -1,6 +1,6 @@
 package practice;
 
-//knight tour에서 다음 이동할 위치
+//knight tour, NQueen에서 다음 이동할 위치
 //움직일 위치 정보를 저장하기 위한 클래스
 public class Offset {
 	// 행과 열 필드

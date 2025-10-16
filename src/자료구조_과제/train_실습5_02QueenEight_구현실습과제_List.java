@@ -5,7 +5,7 @@ import java.util.HashSet;
 import java.util.List;
 import java.util.Set;
 
-public class NQueen {
+public class train_실습5_02QueenEight_구현실습과제_List {
 	private static final int BOARD_SIZE = 8;
 	private int solutionsCount = 0;
 	
@@ -94,7 +94,7 @@ public class NQueen {
 	}
 	public static void main(String[] args) {
 		System.out.println("NQueen");
-		NQueen solver = new NQueen();
+		train_실습5_02QueenEight_구현실습과제_List solver = new train_실습5_02QueenEight_구현실습과제_List();
 		solver.solve();
 		List<List<Integer>> solutions = solver.getAllSolutions();
 		System.out.println("\n모든 해: " + solutions.size());

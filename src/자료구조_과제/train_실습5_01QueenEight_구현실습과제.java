@@ -165,7 +165,7 @@ class Stack4 {
 	}
 }
 
-public class train_실습5_QueenEight_구현실습과제 {
+public class train_실습5_01QueenEight_구현실습과제 {
 	private static final int BOARD_SIZE = 8;
 	private int[][] board;
 	private Stack4 queens;
@@ -175,7 +175,7 @@ public class train_실습5_QueenEight_구현실습과제 {
 		return solutionsCount;
 	}
 
-	public train_실습5_QueenEight_구현실습과제() {
+	public train_실습5_01QueenEight_구현실습과제() {
 		this.board = new int[BOARD_SIZE][BOARD_SIZE];
 		this.queens = new Stack4(100);
 		this.solutionsCount = 0;
@@ -297,7 +297,7 @@ public class train_실습5_QueenEight_구현실습과제 {
 	
 	public static void main(String[] args) {
 		System.out.println("NQueen");
-		train_실습5_QueenEight_구현실습과제 solver = new train_실습5_QueenEight_구현실습과제();
+		train_실습5_01QueenEight_구현실습과제 solver = new train_실습5_01QueenEight_구현실습과제();
 		solver.solve();
 	}
 }
