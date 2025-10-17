@@ -13,13 +13,15 @@ import java.util.Scanner;
 class 실습6_01BubbleSort {
  //--- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
  static void swap(int[] a, int idx1, int idx2) {
-     int t = a[idx1]; a[idx1] = a[idx2]; a[idx2] = t;
+     int t = a[idx1];
+     a[idx1] = a[idx2];
+     a[idx2] = t;
  }
 
  //--- 버블 정렬 ---//
  static void bubbleSort(int[] a, int n) {
 	 int count = 0;
-     for (int i = 0; i < n - 1; i++)//패스
+     for (int i = 0; i < n - 1; i++)//패스 => 정렬된 부분 빼고 bubblesort 반복
          for (int j = n - 1; j > i; j--)//끝에서 앞쪽으로 이동하면서 버블 처리 => j가 i보다 커야 arrayout 에러 안 남
          {
         	 count++;

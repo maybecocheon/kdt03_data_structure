@@ -27,11 +27,11 @@ public class 실습6_12_0Merge정수배열구현실습 {
 
 	// --- 퀵 정렬(비재귀 버전)---//
 	static void MergeSort(int[] a, int left, int right) {
-		int mid = (left+right)/2;
+		int mid = (left + right) / 2;
 		if (left == right) return;
-		MergeSort(a, left, mid);
-		MergeSort(a, mid+1, right);
-		merge(a, left, mid, mid+1, right);
+		MergeSort(a, left, mid); // 왼쪽 부분 정렬
+		MergeSort(a, mid + 1, right); // 오른쪽 부분 정렬
+		merge(a, left, mid, mid + 1, right); // 병합
 		return;
 	}
 

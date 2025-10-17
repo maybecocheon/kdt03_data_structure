@@ -27,7 +27,7 @@ public class NQueen {
 	int[][] board;
 	// 퀸의 이동 경로를 저장하는 스택 생성
 	Stack<Offset> st;
-	// 퀸의 해결책 개수 생성
+	// 퀸의 해 개수 생성
 	int solutionCount;
 	
 	//생성자 생성
@@ -35,6 +35,7 @@ public class NQueen {
 		this.board = new int[N][N];
 		this.st = new Stack<>();
 		this.solutionCount = 0;
+		intializeBoard();
 	}
 	
 	//메서드 생성
@@ -48,56 +49,114 @@ public class NQueen {
 	}
 	
 	// 해를 찾아 나가는 메서드
-	boolean solve(){
+	void solve(){
 		// 시작 위치가 필요(행과 열)
 		// 반복(무한히)
 		// - 행과 열에서 퀸을 배치할 수 있는 위치를 찾아야 함
 		// - 퀸을 배치했으면 다른 형태의 배치 방법이 있는지 확인
 		// - 퀸을 배치했는데 다른 형태의 배치 방법이 없으면 => 백트래킹 => 백트래킹 성공하면 멈추고 나가기
 		
-		int startX = 0;
-		int startY = 0;
+		int x = 0;
+		int y = 0;
 		
 		while(true) {
-			Offset current = st.peek();
+			boolean placed = false;
 			
-			// 조건 만족하면
-			if (isSafe(startX, startY)) {
-				// 체스판 해당 자리 0으로 변경
-				board[startX][startY] = 0;
-				// 스택에 값 넣기
-				st.push(new Offset(startX, startY));
-				// 해결한 개수 +1
-				solutionCount++;
+			// - 행과 열에서 퀸을 배치할 수 있는 위치를 찾아야 함
+			// 현재 행에서 퀸을 배치할 수 있는 열 찾기
+			while(y < N) {
+				if (isSafe(x, y)) {
+					// 퀸 채워졌으니까 체스판 해당 자리 0으로 변경
+					board[x][y] = 0;
+					// 스택에 값 넣기
+					st.push(new Offset(x, y));
+					// 퀸 하나 놓았으니까
+					placed = true;
+					// 이 상태로 계속 돌면 무한 루프이므로 break 걸어 주기
+					break;
+				}
+				// isSafe 하지 않으면 열을 증가시켜서 다시 while문에서 비교해 보기
+				y++;
+			}
+			
+			// 퀸을 하나 배치했으니까 다른 퀸의 자리를 찾으러 가야 함
+			if (placed) {
+				// 하나의 해를 만족시키는 모든 퀸을 다 찾았으면
+				if (st.size() == N) {
+					// 해를 하나 찾았으니 +1
+					solutionCount++;
+					// 그 해를 출력
+					printSolve();
+					
+					// 다른 해를 찾기 위한 백트래킹
+					// 가장 마지막으로 넣은 퀸 꺼내기
+					Offset current = st.pop();
+					// 그 퀸이 있는 체스판 자리를 -1로 변경
+					board[current.row][current.col] = -1;
+					// x, y의 값 변경시켜서 다시 해를 찾으러 가야 함
+					// 일단 같은 행에서 열이 달라지는 경우만 보기
+					x = current.row;
+					y = current.col + 1;
+				} else {
+					// 최대의 열이 될 때까지 반복했는데도 놓은 퀸이 8개가 안 된다면 행을 바꿔서 다시 해를 찾으러 가야 함
+					x = x + 1;
+					y = 0;
+				}
+			} else {
+				// 퀸을 놓지 못하면 이전 위치로 다시 돌아가서 다른 쪽으로 가 보기
+				// 퀸이 아무 데도 없다면 제일 큰 반복문 멈추고 나가기 => false 반환
+				if (st.isEmpty()) {
+					break;
+				}
+				Offset current = st.pop();
+				board[current.row][current.col] = -1;
+				x = current.row;
+				y = current.col + 1;
 			}
 		}
-		return false;
 	}
+	
 	// 퀸이 체스판 내부에 있고 다른 퀸과 중복되지 않는지 확인하는 메서드
 	boolean isSafe(int row, int col){
 		// 열
-		for (int i = col; i < N; i++) {
-			if (board[row][i] != -1) {
+		for (int i = 0; i < row; i++) {
+			if (board[i][col] == 0) {
 				return false;
 			}
 		}
 		// 왼쪽 위 대각선
 		for (int i = row - 1, j = col - 1; i >= 0 && j >= 0; i--, j--) {
-			if (board[i][j] != -1) {
+			if (board[i][j] == 0) {
 				return false;
 			}
 		}
 		// 오른쪽 위 대각선
 		for (int i = row - 1, j = col + 1; i >= 0 && j < N; i--, j++) {
-			if (board[i][j] != -1) {
+			if (board[i][j] == 0) {
 				return false;
 			}
 		} return true;
 	}
 	
 	// 출력 메서드
-	printSolve(){
-		
+	void printSolve() {
+		// 해의 개수
+		System.out.println("\n해: " + solutionCount);
+		// 퀸이 배치되어 있는 체스판 출력
+		for (int i = 0; i < N; i++) {
+			for (int j = 0; j < N; j++) {
+				if (board[i][j] == 0) {
+					System.out.print("Q  ");
+				} else {
+					System.out.print(".  ");
+				}
+			} System.out.println();
+		}
+		// 퀸이 배치되어 있는 좌표 출력
+		System.out.print("퀸 좌표: ");
+		for (Offset o : st) {
+			System.out.print(o);
+		} System.out.println();
 	}
 	
 	public static void main(String[] args) {

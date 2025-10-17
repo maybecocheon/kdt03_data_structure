@@ -11,7 +11,8 @@ public class 실습6_12_1MergeSort정수2 {
 			if (a[p] < a[q]) temp[ix++] = a[p++];
 			else if (a[p] > a[q]) temp[ix++] = a[q++];
 			else {
-				temp[ix++] = a[p++];temp[ix++] = a[q++];
+				temp[ix++] = a[p++];
+				temp[ix++] = a[q++];
 			}
 		}
 		while (p > righta && q <= rightb) temp[ix++] = a[q++];

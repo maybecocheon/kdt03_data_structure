@@ -12,4 +12,10 @@ public class Offset {
 		this.row = row;
 		this.col = col;
 	}
+	
+	//toString 오버라이딩
+	@Override
+	public String toString() {
+		return "[" + row + ", " + col + "]";
+	}
 }
