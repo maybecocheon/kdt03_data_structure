@@ -7,6 +7,10 @@ class Term implements Comparable<Term>{
     int    exp;            // 지수
 
     //--- 생성자(constructor) ---//
+    Term() {
+    	
+    }
+    
     Term(double coef, int exp) {
         this.coef = coef;  this.exp = exp; 
     }

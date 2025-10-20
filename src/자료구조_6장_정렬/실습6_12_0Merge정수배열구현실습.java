@@ -5,27 +5,28 @@ public class 실습6_12_0Merge정수배열구현실습 {
 	// --- 배열 요소 a[idx1]와 a[idx2]의 값을 교환 ---//
 	static void merge(int[] a, int lefta, int righta, int leftb, int rightb ) {
 		 //body를 지우고 작성 훈련 연습이 도움이 된다 
-		int temp[] = new int[30];
+		int temp[] = new int[rightb - lefta + 1];
 		int ix = 0;
 		int p = lefta, q = leftb;
+		//양쪽 다 남은 경우
 		while (p <= righta && q <= rightb) {
-			
+			temp[ix++] = (a[p] <= a[q] ? a[p++] : a[q++]);
 		}
-		while (p > righta && q <= rightb) {
-			
+		//왼쪽은 끝났고 오른쪽만 남은 경우
+		while (q <= rightb) {
+			temp[ix++] = a[q++];
 		}
-		while (q > rightb && p <= righta) 
-		{
-			
+		//오른쪽은 끝났고 왼쪽만 남은 경우
+		while (p <= righta) {
+			temp[ix++] = a[p++];
 		}
-		System.out.println();
 		for (int j = 0; j < ix; j++) {
 			// 배열  temp을 배열 a에 복사
+			a[lefta + j] = temp[j];
 		}
-			System.out.println();
 	}
 
-	// --- 퀵 정렬(비재귀 버전)---//
+	// --- 병합 정렬(재귀 버전)---//
 	static void MergeSort(int[] a, int left, int right) {
 		int mid = (left + right) / 2;
 		if (left == right) return;

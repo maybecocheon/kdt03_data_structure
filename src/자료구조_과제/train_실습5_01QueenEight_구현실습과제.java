@@ -85,7 +85,7 @@ class Stack4 {
 	public Stack4(int capacity) {
 		this.capacity = capacity;
 		data = new ArrayList<Position>(capacity);
-		top = -1;
+		top = 0;
 	}
 
 	// --- 스택에 x를 푸시 ---//
@@ -104,9 +104,9 @@ class Stack4 {
 		if (isEmpty()) {
 			throw new EmptyGenericStackException("스택이 비어 있습니다.");
 		} else {
+			top--; // 먼저 증감하고 remove 해야 함
 			Position p = data.get(top);
 			data.remove(top);
-			top--;
 			return p;
 		}
 	}
@@ -140,17 +140,17 @@ class Stack4 {
 
 	// --- 스택에 쌓여있는 데이터 갯수를 반환 ---//
 	public int size() {
-		return top + 1;
+		return top;
 	}
 
 	// --- 스택이 비어있는가? ---//
 	public boolean isEmpty() {
-		return top < 0;
+		return top <= 0;
 	}
 
 	// --- 스택이 가득 찼는가? ---//
 	public boolean isFull() {
-		return top + 1 >= capacity;
+		return top >= capacity;
 	}
 
 	// --- 스택 안의 모든 데이터를 바닥 → 꼭대기 순서로 출력 ---//
