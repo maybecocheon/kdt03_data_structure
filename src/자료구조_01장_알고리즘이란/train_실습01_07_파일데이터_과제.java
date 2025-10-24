@@ -1,4 +1,4 @@
-package 자료구조_1장_알고리즘이란;
+package 자료구조_01장_알고리즘이란;
 
 /*
  * 문자 단위, 줄단위로 읽는 파일
@@ -10,7 +10,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class train_실습1_7_파일데이터_과제 { // 써져 있는 건 보고 익히기!
+public class train_실습01_07_파일데이터_과제 { // 써져 있는 건 보고 익히기!
 	
 	public static void printStringArray(String[] arr) {
 		for (String st : arr)

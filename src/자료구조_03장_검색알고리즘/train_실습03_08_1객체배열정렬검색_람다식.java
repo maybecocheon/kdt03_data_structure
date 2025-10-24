@@ -1,4 +1,4 @@
-package 자료구조_3장_검색알고리즘;
+package 자료구조_03장_검색알고리즘;
 
 import java.util.Arrays;
 import java.util.Comparator;
@@ -40,7 +40,7 @@ class FruitPrice implements Comparator<Fruit4>{
 	}
 }
 
-public class train_실습3_08_1객체배열정렬검색_람다식 {
+public class train_실습03_08_1객체배열정렬검색_람다식 {
 
 	//sortData는 static 클래스 
 	private static void sortData(Fruit4[] arr, Comparator<Fruit4> cc_price) {

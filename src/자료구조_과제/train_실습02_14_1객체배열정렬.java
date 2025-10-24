@@ -51,7 +51,7 @@ class PhyscData2 implements Comparable<PhyscData2>{
 */
 }
 
-public class train_실습2_14_1객체배열정렬 {
+public class train_실습02_14_1객체배열정렬 {
 	//배열을 출력하는 메서드 생성
 	static private void showData(String str, PhyscData2[] data) {
 		System.out.println(str);

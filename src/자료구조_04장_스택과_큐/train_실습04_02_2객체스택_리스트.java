@@ -1,4 +1,4 @@
-package 자료구조_4장_스택과_큐;
+package 자료구조_04장_스택과_큐;
 /*
  * 실습 4_3번
  * point(x,y) 객체를 스택에 저장
@@ -147,7 +147,7 @@ class ObjectStack{
 		}
 	}
 }
-public class train_실습4_02_2객체스택_리스트 {
+public class train_실습04_02_2객체스택_리스트 {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

@@ -1,4 +1,4 @@
-package 자료구조_2장_기본자료구조;
+package 자료구조_02장_기본자료구조;
 
 /*
  * 3번째 실습
@@ -8,7 +8,7 @@ package 자료구조_2장_기본자료구조;
 
 import java.util.Arrays;
 import java.util.Random;
-public class train_실습2_06다차원배열 {
+public class train_실습02_06다차원배열 {
 	
 	static private void inputData(int[][] arr) {
 		//랜덤 클래스 활용해 배열 생성

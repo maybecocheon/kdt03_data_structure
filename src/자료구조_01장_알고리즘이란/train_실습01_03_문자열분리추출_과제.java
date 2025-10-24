@@ -1,8 +1,8 @@
-package 자료구조_1장_알고리즘이란;
+package 자료구조_01장_알고리즘이란;
 
 import java.util.Arrays;
 
-public class train_실습1_3_문자열분리추출_과제 {
+public class train_실습01_03_문자열분리추출_과제 {
 /*
  * split(",")
  * trim() 앞뒤 공백 제거

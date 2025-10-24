@@ -1,4 +1,4 @@
-package 자료구조_3장_검색알고리즘;
+package 자료구조_03장_검색알고리즘;
 
 import java.util.Random;
 import java.util.Arrays;
@@ -57,7 +57,7 @@ class Polynomial {
 
   
 }
-public class train_실습3_12다항식공유배열연산_상급자 {
+public class train_실습03_12다항식공유배열연산_상급자 {
     private static final Random RAND = new Random(49);
 
     private static void printMenu() {

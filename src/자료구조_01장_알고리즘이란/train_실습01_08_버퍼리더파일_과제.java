@@ -1,4 +1,4 @@
-package 자료구조_1장_알고리즘이란;
+package 자료구조_01장_알고리즘이란;
 
 import java.io.BufferedInputStream;
 import java.io.BufferedWriter;
@@ -8,7 +8,7 @@ import java.io.FileWriter;
 import java.io.IOException;
 import java.util.Arrays;
 
-public class train_실습1_8_버퍼리더파일_과제 {
+public class train_실습01_08_버퍼리더파일_과제 {
 	
 	public static void printStringArray(String[] arr) {
 		for (String st : arr) {

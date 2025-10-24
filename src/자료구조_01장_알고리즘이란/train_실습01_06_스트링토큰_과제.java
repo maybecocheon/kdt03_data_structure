@@ -1,9 +1,9 @@
-package 자료구조_1장_알고리즘이란;
+package 자료구조_01장_알고리즘이란;
 
 import java.util.Arrays;
 import java.util.StringTokenizer;
 
-public class train_실습1_6_스트링토큰_과제 {
+public class train_실습01_06_스트링토큰_과제 {
 /*
  * StringTokenizer(input), countTokens(), hasMoreTokens(), nextToken()
  * parseDouble(stringArray[i])

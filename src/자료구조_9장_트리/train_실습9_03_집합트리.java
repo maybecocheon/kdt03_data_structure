@@ -17,6 +17,7 @@ class Sets3 {
     }
     void displaySets() {
     	//{1,2,3} 등으로 set을 표시하기
+    	//하나의 대표(root)가 1이니까, 집합 {1,2,3}으로 묶기 => {1,2} {1,3} 아님
 
     }
     public void display() {
@@ -53,6 +54,7 @@ class Sets3 {
 
     public void weightedUnion(int i, int j) {
         // Union sets with roots i and j, using the weighting rule.
+    	//{0,1}{2,3,4,5}일 때 루트인 0과 2에 각각 원소의 개수를 -2, -4로 주고 개수를 비교해서 큰 쪽에 작은 집합을 붙여서 트리 합치기
         i = simpleFind(i);
         j = simpleFind(j);
         if (i == j) return;

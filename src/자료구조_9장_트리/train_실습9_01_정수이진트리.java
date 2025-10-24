@@ -29,152 +29,6 @@ class TreeNode5 {
 	}
 }
 
-class ObjectStack5{
-	//--- 실행시 예외: 스택이 비어있음 ---//
-	// generic class는 Throwable을 상속받을 수 없다 - 지원하지 않는다
-	public class EmptyGenericStackException extends Exception {
-
-	}
-
-	//--- 실행시 예외: 스택이 가득 참 ---//
-	public class OverflowGenericStackException extends RuntimeException {
-
-	}
-
-    private List<TreeNode5> data;  // list를 사용: 배열은 크기를 2배로 늘리는 작업 필요 
-	//private List<T> data;
-	private int capacity; // 스택의 크기
-	private int top; // 스택 포인터
-
-//--- 생성자(constructor) ---//
-	public ObjectStack5(int capacity) {
-
-	}
-
-//--- 스택에 x를 푸시 ---//
-	public boolean push(TreeNode5 x) throws OverflowGenericStackException {
-
-
-	}
-
-//--- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
-	public TreeNode5 pop() throws EmptyGenericStackException  {
-
-	}
-
-//--- 스택에서 데이터를 피크(peek, 정상에 있는 데이터를 들여다봄) ---//
-	public TreeNode5 peek() throws EmptyGenericStackException  {
-
-	}
-
-//--- 스택을 비움 ---//
-	public void clear() {
-		top = 0;
-	}
-
-//--- 스택에서 x를 찾아 인덱스(없으면 –1)를 반환 ---//
-	public int indexOf(TreeNode5 x) {
-
-	}
-
-//--- 스택의 크기를 반환 ---//
-	public int getCapacity() {
-		return capacity;
-	}
-
-//--- 스택에 쌓여있는 데이터 갯수를 반환 ---//
-	public int size() {
-		return top;
-	}
-
-//--- 스택이 비어있는가? ---//
-	public boolean isEmpty() {
-
-	}
-
-//--- 스택이 가득 찼는가? ---//
-	public boolean isFull() {
-
-	}
-
-//--- 스택 안의 모든 데이터를 바닥 → 꼭대기 순서로 출력 ---//
-	public void dump() {
-
-	}
-}
-//정수를 저정하는 이진트리 만들기 실습
-class ObjectQueue5 {
-    private TreeNode5[] que;//큐는 배열로 구현
-	//private List<Integer> que; // 수정본
-	private int capacity; // 큐의 크기
-	private int front; // 맨 처음 요소 커서
-	private int rear; // 맨 끝 요소 커서
-
-//--- 실행시 예외: 큐가 비어있음 ---//
-	public class EmptyQueueException extends RuntimeException {
-
-	}
-
-//--- 실행시 예외: 큐가 가득 찼음 ---//
-	public class OverflowQueueException extends RuntimeException {
-
-	}
-
-//--- 생성자(constructor) ---//
-public ObjectQueue5(int maxlen) {
-
-}
-
-//--- 큐에 데이터를 인큐 ---//
-	public int enque(TreeNode5 x) throws OverflowQueueException {
-
-	}
-
-//--- 큐에서 데이터를 디큐 ---//
-	public TreeNode5 deque() throws EmptyQueueException {
-
-	}
-
-//--- 큐에서 데이터를 피크(프런트 데이터를 들여다봄) ---//
-	public TreeNode5 peek() throws EmptyQueueException {
-
-	}
-
-//--- 큐를 비움 ---//
-	public void clear() {
-		num = front = rear = 0;
-	}
-
-//--- 큐에서 x를 검색하여 인덱스(찾지 못하면 –1)를 반환 ---//
-	public int indexOf(TreeNode5 x) {
-	
-	}
-
-//--- 큐의 크기를 반환 ---//
-	public int getCapacity() {
-		return capacity;
-	}
-
-//--- 큐에 쌓여 있는 데이터 개수를 반환 ---//
-	public int size() {
-		return num;
-	}
-
-//--- 큐가 비어있는가? ---//
-	public boolean isEmpty() {
-
-	}
-
-//--- 큐가 가득 찼는가? ---//
-	public boolean isFull() {
-
-	}
-
-//--- 큐 안의 모든 데이터를 프런트 → 리어 순으로 출력 ---//
-	public void dump() {
-
-	}
-}
 class Tree5 {
 	TreeNode5 root;
 
@@ -183,7 +37,7 @@ class Tree5 {
 	}
 	/*
 	 * inorderSucc()는 current 노드 다음에 방문할 노드를 찾는다
-	 * inorder traversal를 이해하는 것이 필요하다 
+	 * inorder traversal를 이해하는 것이 필요하다 => tl < x < tr 순서로 출력하면서 요소들을 정렬해 줌
 	 * 트리에서 delete 구현시에 사용된다 
 	 */
 	TreeNode5 inorderSucc(TreeNode5 current) {
@@ -196,7 +50,7 @@ class Tree5 {
 	}
 
 	boolean isLeafNode(TreeNode5 current) {//current 가 leaf node 인지 조사 
-
+		// current의 왼쪽, 오른쪽 자식 모두 null이면 true
 	}
 
 	void inorder() {//main에서 호출되는 driver function
@@ -254,7 +108,7 @@ class Tree5 {
 			if (!s.isEmpty()) {
 				try {
 					CurrentNode = s.pop();
-				} catch (자료구조_9장_트리.ObjectStack5.EmptyGenericStackException e) {
+				} catch (Exception e) {
 					// TODO Auto-generated catch block
 					e.printStackTrace();
 				}
@@ -308,7 +162,21 @@ class Tree5 {
 		//삭제 대상이 leaf node인 경우, non-leaf node로 구분하여 구현한다 
 		TreeNode5 p = root, q = null, parent = null;
 		int branchMode = 0; // 1은 left, 2는 right
-		
+		while (p != null) {
+			q = p;
+			if (num < p.data) {
+				branchMode = 0;
+				p = p.LeftChild;
+			} else if (num > p.data) {
+				branchMode = 1;
+				p = p.RightChild;
+			} else {
+				if (branchMode == 0)
+					q.LeftChild = null;
+				else 
+					q.RightChild = null;
+			}
+		}
 		return false;
 
 	}

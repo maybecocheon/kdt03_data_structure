@@ -1,4 +1,4 @@
-package 자료구조_4장_스택과_큐;
+package 자료구조_04장_스택과_큐;
 
 /*
 문제 설명:
@@ -22,7 +22,7 @@ package 자료구조_4장_스택과_큐;
 */
 import java.util.*;
 
-public class train_실습4_04_스택응용_괄호매칭검사 {
+public class train_실습04_04스택응용_괄호매칭검사 {
 
 	public static boolean isValid(String s) {
 		/*

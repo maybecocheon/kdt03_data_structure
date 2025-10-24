@@ -1,4 +1,4 @@
-package 자료구조_4장_스택과_큐;
+package 자료구조_04장_스택과_큐;
 /*
  * 실습 4_1번 - 정수 배열 스택
  * 스택을 정수 배열로 구현시에 교재 코드를 보지 않고 구현 완성하기 
@@ -97,7 +97,7 @@ class IntStack3 {
 	}
 }
 
-public class train_실습4_02정수스택_배열 {
+public class train_실습04_01정수스택_배열 {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

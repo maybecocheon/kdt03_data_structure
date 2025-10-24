@@ -1,6 +1,6 @@
-package 자료구조_1장_알고리즘이란;
+package 자료구조_01장_알고리즘이란;
 
-public class train_실습1_2문자열교체_과제 {
+public class train_실습01_02문자열교체_과제 {
 
     // 서브스트링을 추가하는 함수
 	/*

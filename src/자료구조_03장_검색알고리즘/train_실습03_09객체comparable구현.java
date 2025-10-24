@@ -1,4 +1,4 @@
-package 자료구조_3장_검색알고리즘;
+package 자료구조_03장_검색알고리즘;
 
 import java.util.Arrays;
 
@@ -105,7 +105,7 @@ class Student implements Comparable<Student> {
 	}
 }
 
-public class train_실습3_09객체comparable구현 {
+public class train_실습03_09객체comparable구현 {
 	
 	//show는 static
 	static void show(Student[] arr) {

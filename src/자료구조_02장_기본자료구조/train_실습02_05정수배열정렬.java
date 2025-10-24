@@ -1,4 +1,4 @@
-package 자료구조_2장_기본자료구조;
+package 자료구조_02장_기본자료구조;
 /*
  * 2장 - 정수 배열 정렬
  */
@@ -7,7 +7,7 @@ import java.util.Arrays;
 //교재 67 - 실습 2-5
 //2번 실습
 import java.util.Random;
-public class train_실습2_05정수배열정렬 {
+public class train_실습02_05정수배열정렬 {
 	
 	static private void inputData(int[] data) {
 		//난수 생성해서 data라는 배열에 int 넣기

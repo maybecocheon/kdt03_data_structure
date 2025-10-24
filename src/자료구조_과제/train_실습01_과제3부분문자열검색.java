@@ -8,7 +8,7 @@ package 자료구조_과제;
  * 
  * 패턴이 나타나는 인덱스를 반환 => for 중첩문 활용
  */
-public class train_실습1장_과제3부분문자열검색 {
+public class train_실습01_과제3부분문자열검색 {
 		
 		public static void searchSubstring(String text, String pattern) {
 			//조기 종료

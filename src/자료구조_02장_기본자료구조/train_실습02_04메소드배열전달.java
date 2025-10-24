@@ -1,4 +1,4 @@
-package 자료구조_2장_기본자료구조;
+package 자료구조_02장_기본자료구조;
 /*
  * 2장: 메소드 함수에 parameter 전달
  * 메소드에 배열 전달 실습: 교재 59 - 메소드의 매개변수로 배열 사용하기
@@ -10,7 +10,7 @@ import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
 
-public class train_실습2_04메소드배열전달 {
+public class train_실습02_04메소드배열전달 {
 	static int top = 0;
 	static final int MAX_LENGTH = 20;
 	
