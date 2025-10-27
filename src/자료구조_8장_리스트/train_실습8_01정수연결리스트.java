@@ -6,8 +6,8 @@ import java.util.Random;
 import java.util.Scanner;
 
 class Node1 {
-	int data;
-	Node1 link;
+	int data; 	// 데이터 저장 변수
+	Node1 link; // 다른 노드를 참조할 링크 노드
 
 	public Node1(int element) {
 		data = element;
@@ -16,19 +16,26 @@ class Node1 {
 }
 
 class LinkedList1 {
-	Node1 first; //head와 동일함
+	Node1 head; // Node1 타입의 head 노드 인스턴스 변수
 
 	public LinkedList1() {
-		first = null;
+		head = null;
 	}
 
-	public boolean Delete(int element) //전달된 element 값이 존재 하면 삭제하고 true로 리턴
-	{
-		Node1 p = first;
-		Node1 q = null; // q는 p를 따라다닌다
-		while (p != null) {
+	public boolean Delete(int element) { //전달된 element 값이 존재 하면 삭제하고 true로 리턴
+		Node1 p = head;
+		Node1 q = null; // q는 p를 따라다닌다 => 연결 끊기 전에 q에 p가 가리키는 다음 노드 값을 저장해 주어야 함
+		while (p != null) { // p가 연결되어 있을 때까지 => p가 tail일 때까지
 			if (element == p.data) {
-				
+				if (q == null) {
+					// case1 : 삭제할 노드가 head인 경우
+					head = p.link; // head는 p의 다음 노드를 참조하도록 함
+				} else {
+					// case2 : 중간 또는 마지막 노드 삭제
+					q.link = p.link;
+				}
+				p.link = null; // p의 link는 null을 할당하여 연결을 끊음
+				return true;
 			}
 			q = p;
 			p = p.link;
@@ -37,32 +44,43 @@ class LinkedList1 {
 	}
 
 	public void Show() { // 전체 리스트를 순서대로 출력한다.
-		Node1 p = first;
-		int num = 0;
-
+		Node1 p = head;
+//		int num = 0;
+		if (head == null) {
+		    System.out.println("리스트가 비어 있습니다.");
+		    return;
+		}
+		System.out.println("== 결과 출력 ==");
+		while (p != null) {
+			
+			System.out.print(p.data + " ");
+			p = p.link;
+		}
+		System.out.println();
 	}
 
-	public void Add(int element) // 임의 값을 삽입할 때 리스트가 오름차순으로 정렬이 되도록 한다
-	{
+	public void Add(int element) { // 임의 값을 삽입할 때 리스트가 오름차순으로 정렬이 되도록 한다
 		Node1 newNode = new Node1(element);
-		if (first == null) // insert into empty list
-		{
-			first = newNode; // first.link = newNode로 쓰면 NP Exception 에러 뜸
+		if (head == null) { // insert into empty list
+			head = newNode; // head.link = newNode로 쓰면 NP Exception 에러 뜸
 			return;
 		} else {
 			//올림차순으로 정렬되게 삽입
-			Node1 p = first;
+			Node1 p = head;
 			Node1 q = null; // q는 p를 따라다닌다
 			while (p != null) {
 				if (element < p.data) {
 					//1. 맨 처음에 삽입되는 경우
-					if (p == first) {
+					if (p == head) {
 						newNode.link = p;
-						first = newNode;	
+						head = newNode;
+						break;
 					}
 					//2. 중간에 삽입되는 경우
 					else {
-						
+						q.link = newNode;
+						newNode.link = p;
+						break;
 					}
 				} else {
 					q = p;
@@ -78,11 +96,12 @@ class LinkedList1 {
 	}
 
 	public boolean Search(int data) { // 전달된 data 값을 찾아 존재하면 true로 리턴, 없으면 false로 리턴
-		Node1 ptr = first;
+		Node1 ptr = head;
 		while (ptr != null) {
 			if (data == ptr.data) {
-				ptr = ptr.link; // 연결리스트의 핵심, 다음 노드 가리키기
 				return true;
+			} else {
+				ptr = ptr.link; // 연결리스트의 핵심, 다음 노드 가리키기
 			}
 		}
 		return false;
@@ -94,7 +113,36 @@ class LinkedList1 {
 		 * 난이도 등급: 최상
 		 * a = (3, 5, 7), b = (2,4,8,9)이면 a = (2,3,4,5,8,9)가 되도록 구현하는 코드
 		 */
-
+		Node1 p = head;		// 리스트 a의 포인터
+		Node1 bp = b.head;	// 리스트 b의 포인터
+		
+		Node1 newHead = null; 	// 병합 후 새 head
+		Node1 tail = null; 		// 병합 후 마지막 노드
+		
+		//첫 번째 헤드 결정
+		// p < bp
+		if (p.data < bp.data) {
+			newHead = p;
+			p = p.link;
+		// bp <= p
+		} else {
+			newHead = bp;
+			bp = bp.link;
+		}
+		
+		tail = newHead;
+		
+		while (p != null && bp != null) {
+			// p < bp
+			if (p.data < bp.data) {
+				
+				p.link = bp;
+			// bp <= p
+			} else {
+				
+				bp = bp.link;
+			}
+		}
 	}
 }
 
@@ -142,7 +190,7 @@ public class train_실습8_01정수연결리스트 {
 
 	public static void main(String[] args) {
 		Menu menu; // 메뉴 참조 변수일 뿐이다 
-		Random rand = new Random();
+		Random rand = new Random(42);
 		LinkedList1 l = new LinkedList1();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("추가할 난수 숫자 개수::");
@@ -152,9 +200,10 @@ public class train_실습8_01정수연결리스트 {
 		do {
 			switch (menu = SelectMenu()) {//Menu 생성자 호출 - menu 객체를 리턴한다 
 			case Add: // 난수를 삽입하는데 올림차순으로 정렬되도록 구현
-				for (int i =0; i < count; i++) {
+				for (int i = 0; i < count; i++) {
 					data = rand.nextInt(100);
 					l.Add(data);
+					System.out.println("== 삽입 완료 ==");
 				}
 				break;
 			case Delete:
@@ -176,7 +225,7 @@ public class train_실습8_01정수연결리스트 {
 				break;
 			case Merge://리스트 l과 l2를 합병하여 올림차순 정렬이 되게 구현한다 
 				LinkedList1 l2 = new LinkedList1();
-				for (int i =0; i < count; i++) {
+				for (int i = 0; i < count; i++) {
 					data = rand.nextInt(20);
 					l2.Add(data);
 				}

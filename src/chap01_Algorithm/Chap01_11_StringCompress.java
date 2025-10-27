@@ -1,4 +1,4 @@
-package 자료구조_01장_알고리즘이란;
+package chap01_Algorithm;
 
 /*
 * 문자열에서 연속해서 반복되는 문자를 해당 문자와 반복 횟수로 압축요. 
@@ -11,7 +11,7 @@ package 자료구조_01장_알고리즘이란;
 * 내부 버퍼를 사용하여 문자열을 직접 수정할 수 있다.
 * 객체 자체를 변경하기 때문에 반복적인 문자열 조작에 효율적
 */
-public class train_실습01_과제02문자열압축 {
+public class Chap01_11_StringCompress {
 
 	// private static String compress(String input) {
 	// // String은 일반 인풋, 아웃풋 때, 리턴 타입으로 씀

@@ -1,11 +1,11 @@
-package 자료구조_01장_알고리즘이란;
+package chap01_Algorithm;
 
 /*
  * PCCP 코딩 시험에서 스트링에 대한 기본 함수 사용 숙달이 필요하다
  * 
  */
 
-public class train_실습01_01_문자열검색_과제 {
+public class Chap01_01_StringSearch {
     public static void main(String[] args) {
         String address[] = { 
             "경기도 남양주 별내동", 

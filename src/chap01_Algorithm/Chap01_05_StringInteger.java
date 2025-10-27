@@ -1,8 +1,8 @@
-package 자료구조_01장_알고리즘이란;
+package chap01_Algorithm;
 
 import java.util.Arrays;
 
-public class train_실습01_05_숫자변환_과제 {
+public class Chap01_05_StringInteger {
 /*
  * split(" ")
  * parseInt(stringArray[i])

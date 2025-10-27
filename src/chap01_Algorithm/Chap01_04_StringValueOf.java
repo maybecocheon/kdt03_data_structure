@@ -1,8 +1,8 @@
-package 자료구조_01장_알고리즘이란;
+package chap01_Algorithm;
 
 import java.util.Arrays;
 
-public class train_실습01_04_문자데이터변환_과제 {
+public class Chap01_04_StringValueOf {
 /*
  * valueOf(boolVal)
  * Arrays.sort(array)

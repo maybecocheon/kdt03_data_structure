@@ -1,4 +1,4 @@
-package 자료구조_5장_재귀알고리즘;
+package 자료구조_05장_재귀알고리즘;
 /*
  * 실습 5-1 : 팩토리얼 값을 재귀적으로 구함 - 직접 입력하여 실습
  * recursive relation을 이해
@@ -6,7 +6,7 @@ package 자료구조_5장_재귀알고리즘;
 
 import java.util.Scanner;
 
-class 실습5_01_1Factorial {
+public class 실습5_01_01Factorial {
  //--- 음이 아닌 정수 n의 팩토리얼 값을 반환 ---//
  static int factorial(int n) {
      if (n > 0) {

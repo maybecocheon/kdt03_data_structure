@@ -1,4 +1,4 @@
-package 자료구조_5장_재귀알고리즘;
+package 자료구조_05장_재귀알고리즘;
 
 /*
  * 실습 5-3: 피보나치 수열을 간결한 코딩으로 해결
@@ -10,7 +10,7 @@ package 자료구조_5장_재귀알고리즘;
 
 import java.util.Scanner;
 
-public class 실습5_01_2피보나치수열 {
+public class 실습5_01_02피보나치수열 {
 
  //--- 음이 아닌 정수 n의 팩토리얼 값을 반환 ---//
  static int fibonacci(int n) {

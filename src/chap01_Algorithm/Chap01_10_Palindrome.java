@@ -1,4 +1,4 @@
-package 자료구조_01장_알고리즘이란;
+package chap01_Algorithm;
 
 /*
 * 문자열이 palindrome(앞뒤로 동일하게 읽히는지)인지를 판별
@@ -8,7 +8,7 @@ package 자료구조_01장_알고리즘이란;
 '기러기', '동교동', '소주 만병만 주소' 등이 한국어 회문의 예시이며, 
 영어로는 'civic', 'madam', 'radar' 등이 팰린드롬에 해당
 */
-public class train_실습01_과제01palin문자열 {
+public class Chap01_10_Palindrome {
 	
 	private static boolean isPalindrome(String s) {
 	/* 조기 탈출 코드(방어 코드) => 코드 안정성 위해 현직에서는 꼭 짜 줘야 함
