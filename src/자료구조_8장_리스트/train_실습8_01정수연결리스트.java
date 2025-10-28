@@ -109,40 +109,48 @@ class LinkedList1 {
 	void Merge(LinkedList1 b) {
 		/*
 		 * 연결리스트 a,b에 대하여 a = a + b
-		 * merge하는 알고리즘 구현으로 in-place 방식으로 합병/이것은 새로운 노드를 만들지 않고 합병하는 알고리즘 구현
+		 * merge하는 알고리즘 구현으로 in-place 방식으로 합병/이것은 새로운 노드를 만들지 않고 합병하는 알고리즘 구현 => 제자리 병합
 		 * 난이도 등급: 최상
 		 * a = (3, 5, 7), b = (2,4,8,9)이면 a = (2,3,4,5,8,9)가 되도록 구현하는 코드
 		 */
-		Node1 p = head;		// 리스트 a의 포인터
+		
+		if (b.head == null) return;
+		
+		Node1 p = head;	// 리스트 a의 포인터
+		Node1 q = null;
 		Node1 bp = b.head;	// 리스트 b의 포인터
 		
-		Node1 newHead = null; 	// 병합 후 새 head
-		Node1 tail = null; 		// 병합 후 마지막 노드
-		
-		//첫 번째 헤드 결정
-		// p < bp
-		if (p.data < bp.data) {
-			newHead = p;
-			p = p.link;
-		// bp <= p
-		} else {
-			newHead = bp;
-			bp = bp.link;
-		}
-		
-		tail = newHead;
-		
+		// a와 b의 노드 개수 같을 떄
 		while (p != null && bp != null) {
-			// p < bp
-			if (p.data < bp.data) {
-				
-				p.link = bp;
-			// bp <= p
+			// p <= bp
+			if (p.data <= bp.data) {
+				// p를 그대로 두면 됨
+				q = p;
+				p = p.link;
+			// p > bp
 			} else {
-				
-				bp = bp.link;
+				// bp를 p 앞(q 뒤)에 삽입
+				Node1 temp = bp.link;
+				if (q == null) {
+					head = bp;
+					bp.link = p;
+					q = bp;
+				} else {
+					q.link = bp;
+					bp.link = p;
+					q = bp;
+				}
+				bp = temp;
 			}
 		}
+		
+		// 남는 노드 있을 때
+		if (bp != null) {
+			q.link = bp;
+		}
+		
+		// b 리스트 초기화 => 메모리 절약
+		b.head.link = null;
 	}
 }
 
