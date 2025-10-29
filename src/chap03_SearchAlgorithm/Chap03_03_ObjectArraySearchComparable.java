@@ -1,4 +1,4 @@
-package 자료구조_03장_검색알고리즘;
+package chap03_SearchAlgorithm;
 
 /*
  * 3장 3번 실습과제 - 객체 배열의 정렬과 이진검색 - Comparable 구현
@@ -67,7 +67,7 @@ class FruitPrice2 implements Comparator<Fruit5>{
 }
 
 
-public class train_실습03_06_1객체배열탐색_Comparable {
+public class Chap03_03_ObjectArraySearchComparable {
 	//showData 스태틱 메서드
 	static void showData(String str, Fruit5[] arr) {
 		System.out.println(str);

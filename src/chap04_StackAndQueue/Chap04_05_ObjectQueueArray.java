@@ -1,4 +1,4 @@
-package 자료구조_04장_스택과_큐;
+package chap04_StackAndQueue;
 /*
  * 실습 4_6번 객체 원형 큐를 배열로 구현
  * 교재 148 실습 4_3은 정수 원형 큐를 배열로 구현한 코드임 > 객체 버젼으로 구현
@@ -139,7 +139,7 @@ public objectQueue2(int maxlen) {
 		}
 	}
 }
-public class train_실습04_03_3객체선형큐_배열 {
+public class Chap04_05_ObjectQueueArray {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
 		objectQueue2 oq = new objectQueue2(4); // 최대 64개를 인큐할 수 있는 큐

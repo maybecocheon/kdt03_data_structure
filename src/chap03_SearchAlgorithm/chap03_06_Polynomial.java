@@ -1,4 +1,4 @@
-package 자료구조_03장_검색알고리즘;
+package chap03_SearchAlgorithm;
 
 import java.util.*;
 import java.io.*;
@@ -79,7 +79,7 @@ class Polynomial {
 
 
 }
-public class train_실습03_11다항식객체연산_상급자 {
+public class chap03_06_Polynomial {
     private static final Random RAND = new Random(49);
     
     //add 메서드 생성

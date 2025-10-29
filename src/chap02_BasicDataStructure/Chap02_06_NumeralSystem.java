@@ -1,4 +1,4 @@
-package 자료구조_02장_기본자료구조;
+package chap02_BasicDataStructure;
 //교재 69~74 기수 변환하기 > 실습 2-6 코드 학습
 /*
  *  N 진법을 10진수로 변경후 M진법으로 변경
@@ -10,7 +10,7 @@ package 자료구조_02장_기본자료구조;
  * StringBuilder: mutable - 문자열이 자주 변경시 사용, append, insert, delete, reverse 함수 사용
  * 
  */
-public class train_실습02_12_1기수변환_일반화 {
+public class Chap02_06_NumeralSystem {
 
     // n진수를 10진수로 변환하는 함수
     public static int toDecimal(String number, int baseN) {

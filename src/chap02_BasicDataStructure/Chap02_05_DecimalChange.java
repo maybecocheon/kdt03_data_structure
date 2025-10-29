@@ -1,9 +1,9 @@
-package 자료구조_02장_기본자료구조;
+package chap02_BasicDataStructure;
 
 //입력받은 10진수를 2진수 ~ 36진수로 기수 변환하여 출력
 
 import java.util.Scanner;
-public class train_실습02_12_0기수변환교재코드 {
+public class Chap02_05_DecimalChange {
 
 	//입력받은 10진수를 2진수 ~ 36진수로 기수 변환하여 출력
 

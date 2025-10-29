@@ -1,4 +1,4 @@
-package 자료구조_04장_스택과_큐;
+package chap04_StackAndQueue;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -173,7 +173,7 @@ public RuntimeException(String message) {
 	}
 }
 
-public class train_실습04_02_1정수스택리스트 {
+public class Chap04_02_IntStackList {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

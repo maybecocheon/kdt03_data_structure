@@ -1,4 +1,4 @@
-package 자료구조_04장_스택과_큐;
+package chap04_StackAndQueue;
 /*
  * 실습 4_5번 - 정수 배열 원형 큐
  * 교재 148 ~ 157 페이지
@@ -14,8 +14,8 @@ import java.util.Random;
  */
 import java.util.Scanner;
 
-import 자료구조_4장_스택과_큐.IntQueue3.EmptyIntQueue3Exception;
-import 자료구조_4장_스택과_큐.IntQueue3.OverflowIntQueue3Exception;
+import chap04_StackAndQueue.IntQueue3.EmptyIntQueue3Exception;
+import chap04_StackAndQueue.IntQueue3.OverflowIntQueue3Exception;
 
 //int형 고정 길이 큐
 
@@ -156,7 +156,7 @@ class IntQueue3 {
 		}
 	}
 }
-public class train_실습04_03_2정수원형큐_배열 {
+public class Chap04_04_IntCircleQueueArray {
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);
 		IntQueue3 oq = new IntQueue3(4); // 최대 64개를 인큐할 수 있는 큐

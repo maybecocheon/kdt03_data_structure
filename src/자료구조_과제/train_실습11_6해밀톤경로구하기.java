@@ -1,4 +1,4 @@
-package 자료구조_11장_그래프;
+package 자료구조_과제;
 
 /*
  * 해밀턴 경로 (Hamiltonian Path)란?

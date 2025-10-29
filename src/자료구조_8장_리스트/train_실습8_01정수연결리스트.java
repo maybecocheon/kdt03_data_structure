@@ -134,7 +134,7 @@ class LinkedList1 {
 				if (q == null) {
 					head = bp;
 					bp.link = p;
-					q = bp;
+					q = head;
 				} else {
 					q.link = bp;
 					bp.link = p;
@@ -150,7 +150,7 @@ class LinkedList1 {
 		}
 		
 		// b 리스트 초기화 => 메모리 절약
-		b.head.link = null;
+		b.head = null;
 	}
 }
 
@@ -198,7 +198,7 @@ public class train_실습8_01정수연결리스트 {
 
 	public static void main(String[] args) {
 		Menu menu; // 메뉴 참조 변수일 뿐이다 
-		Random rand = new Random(42);
+		Random rand = new Random(11);
 		LinkedList1 l = new LinkedList1();
 		Scanner sc = new Scanner(System.in);
 		System.out.println("추가할 난수 숫자 개수::");

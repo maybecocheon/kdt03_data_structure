@@ -1,4 +1,4 @@
-package 자료구조_04장_스택과_큐;
+package chap04_StackAndQueue;
 /*
  * 실습 4_3번
  * point(x,y) 객체를 스택에 저장
@@ -16,7 +16,7 @@ import java.util.List;
 import java.util.Random;
 import java.util.Scanner;
 
-import 자료구조_4장_스택과_큐.ObjectStack.EmptyGenericStackException;
+import chap04_StackAndQueue.ObjectStack.EmptyGenericStackException;
 class Point2 {
 	private int ix;
 	private int iy;
@@ -147,7 +147,7 @@ class ObjectStack{
 		}
 	}
 }
-public class train_실습04_02_2객체스택_리스트 {
+public class Chap04_03_ObjectStackList {
 
 	public static void main(String[] args) {
 		Scanner stdIn = new Scanner(System.in);

@@ -1,4 +1,4 @@
-package 자료구조_03장_검색알고리즘;
+package chap03_SearchAlgorithm;
 /*
 * 3장 1번 실습과제: 03-3 정수배열이진검색
 * 함수(메소드)에 parameter 전달 방식을 표현하는 능력의 숙달 훈련
@@ -8,7 +8,7 @@ package 자료구조_03장_검색알고리즘;
 import java.util.Arrays;
 import java.util.List;
 import java.util.Random;
-public class train_실습03_04정수배열이진탐색 {
+public class Chap03_01_IntArrayBinarySearch {
 	// 씨드 11
 	
 	//inputData는 클래스 메서드

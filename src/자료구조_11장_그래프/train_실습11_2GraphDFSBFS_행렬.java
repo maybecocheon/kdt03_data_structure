@@ -5,6 +5,8 @@ import java.util.Queue;
 import java.util.Scanner;
 import java.util.Stack;
 
+import 자료구조_과제.Graph2;
+
 class Graph2 {
     int[][] matrix;
     int n;

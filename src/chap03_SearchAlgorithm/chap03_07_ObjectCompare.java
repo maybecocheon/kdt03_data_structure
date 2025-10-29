@@ -1,4 +1,4 @@
-package 자료구조_03장_검색알고리즘;
+package chap03_SearchAlgorithm;
 import java.util.Arrays;
 import java.util.Comparator;
 
@@ -52,7 +52,7 @@ class VisionOrder implements Comparator<PhyscData3>{
 	}
 }
 
-public class train실습03_13객체비교연산자들정의 {	
+public class chap03_07_ObjectCompare {	
 	static final Comparator<PhyscData3> HEIGHT_ORDER = new HeightOrder();
 	
 	//showData 메서드 생성

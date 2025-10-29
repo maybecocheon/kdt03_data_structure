@@ -1,4 +1,4 @@
-package 자료구조_02장_기본자료구조;
+package chap02_BasicDataStructure;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ import java.util.Arrays;
  * 2장 실습과제4 - 스트링 배열 정렬
  * 정렬된 배열에 insert하면 중간에 끼워 넣으면 큰 값들은 이동해야 하고 크기를 1 증가 처리가 필요 
  */
-public class train_실습02_14스트링배열정렬 {
+public class Chap02_07_StringArraySort {
 	//showData는 클래스 메서드
 	static void showData(String str, String[] data) {
 		System.out.println(str);

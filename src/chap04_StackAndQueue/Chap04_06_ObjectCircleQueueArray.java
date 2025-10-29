@@ -1,4 +1,4 @@
-package 자료구조_04장_스택과_큐;
+package chap04_StackAndQueue;
 /*
  * 실습 6번: 원형 큐로서 큐에 Point 객체를 배열로 저장
  * 실습4_3_2 정수 원형 큐 배열을 객체 버젼으로 구현하는 것임
@@ -102,7 +102,7 @@ class CircularQueue {
 		}
 }
 
-public class train_실습04_03_4객체원형큐배열 {
+public class Chap04_06_ObjectCircleQueueArray {
 public static void main(String[] args) {
 	Scanner stdIn = new Scanner(System.in);
 	CircularQueue oq = new CircularQueue(4); // 최대 4개를 인큐할 수 있는 큐

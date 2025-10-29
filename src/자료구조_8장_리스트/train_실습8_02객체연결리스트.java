@@ -57,6 +57,7 @@ class SimpleObject5 {
 class Node2 {
 	SimpleObject5 data;
 	Node2 link;
+	
 	public Node2(SimpleObject5 element) {
 		data = element;
 		link = null;
@@ -82,16 +83,20 @@ class LinkedList2 {
 		SimpleObject5 so;
 
 	}
-	public void Add(SimpleObject5 element, Comparator<SimpleObject5> cc) 
+	public void Add(SimpleObject5 element, Comparator<SimpleObject5> cc) {
 	//임의 값을 삽입할 때 리스트가 오름차순으로 정렬이 되도록 한다
-	{
 		Node2 newNode = new Node2(element);
-		if (first == null) //insert into empty list
-		{
+		if (first == null) { //insert into empty list
 			first = newNode;
 			return;
 		}
-
+		
+		Node2 p = first;
+		Node2 q = null;
+		
+		while (p != null) {
+			if (p.data.no.comapre  )
+		}
 	}
 	public boolean Search(SimpleObject5 element, Comparator<SimpleObject5> cc) { 
 		// 전체 리스트를 올림차순 순서대로 출력한다.
