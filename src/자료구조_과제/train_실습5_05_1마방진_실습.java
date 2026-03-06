@@ -9,42 +9,77 @@ package 자료구조_과제;
  */
 public class train_실습5_05_1마방진_실습 {
 
-    public static void main(String[] args) {
-        int n = 3; // 마방진의 크기
-        int[][] magicSquare = new int[n][n];
-/*
- * 루벤스의 방법 단계:
-1. 첫 번째 숫자를 첫 번째 행의 가운데 열에 배치합니다.
-2. 다음 숫자는 항상 대각선 위 오른쪽(북동쪽)으로 이동하여 배치합니다.
-    2.1 만약 배열의 경계를 벗어나면 반대편으로 이동합니다.
-        예를 들어, 열이 배열의 오른쪽 끝을 벗어나면 맨 왼쪽 열로 이동하고, 
-        행이 배열의 맨 위를 벗어나면 맨 아래로 이동합니다.
-3. 이미 숫자가 있는 칸에 도달한 경우, 현재 위치 바로 아래의 행으로 이동하여 다음 숫자를 배치합니다.
- */
-        // 마방진 생성 알고리즘 (루벤스의 방법)
-        int row = 0, col = n / 2; // 시작 위치
-        for (int num = 1; num <= n * n; num++) {
-            magicSquare[row][col] = num; // 현재 위치에 숫자 배치
-            //구현
-        }
+	public static void main(String[] args) {
+		int n = 3; // 마방진의 크기
+		int[][] magicSquare = new int[n][n];
+		/*
+		 * 루벤스의 방법 단계: 1. 첫 번째 숫자를 첫 번째 행의 가운데 열에 배치합니다. 2. 다음 숫자는 항상 대각선 위 오른쪽(북동쪽)으로
+		 * 이동하여 배치합니다. 2.1 만약 배열의 경계를 벗어나면 반대편으로 이동합니다. 예를 들어, 열이 배열의 오른쪽 끝을 벗어나면 맨 왼쪽열로
+		 * 이동하고, 행이 배열의 맨 위를 벗어나면 맨 아래로 이동합니다. 3. 이미 숫자가 있는 칸에 도달한 경우, 현재 위치 바로 아래의 행으로
+		 * 이동하여 다음 숫자를 배치합니다.
+		 */
+		// 마방진 생성 알고리즘 (루벤스의 방법)
+		int row = 0, col = n / 2; // 시작 위치
+		for (int num = 1; num <= n * n; num++) {
+			// 현재 위치에 숫자 배치
+			magicSquare[row][col] = num;
 
-        // 마방진 출력
-        showSquare(magicSquare);
+			// 구현
+			// 대각선 위에 배치
+			int nextRow = (row - 1 + n) % n;
+			int nextCol = (col + 1) % n;
+			
+			// 이미 숫자 있는 칸에 도달한 경우
+			if (magicSquare[nextRow][nextCol] != 0) {
+				row = (row + 1 ) % n;
+			} else {
+				row = nextRow;
+				col = nextCol;
+			}
+		}
 
-        // 마방진의 합 확인
-        int magicSum = n * (n * n + 1) / 2;
-        System.out.println("가로, 세로, 대각선의 합 =  " + magicSum );
-        System.out.println("마방진 검사 = " + checkSquare(magicSquare, magicSum));
-    }
+		// 마방진 출력
+		showSquare(magicSquare);
 
-    // 마방진 출력 메서드
-    static void showSquare(int[][] magicSquare) {
-    	//구현
-    }
+		// 마방진의 합 확인
+		int magicSum = n * (n * n + 1) / 2;
+		System.out.println("가로, 세로, 대각선의 합 =  " + magicSum);
+		System.out.println("마방진 검사 = " + checkSquare(magicSquare, magicSum));
+	}
 
-    // 마방진 유효성 검증 메서드
-    static boolean checkSquare(int[][] magicSquare, int magicSum) {
-    	// 구현 
-    }
+	// 마방진 출력 메서드
+	static void showSquare(int[][] magicSquare) {
+		// 구현
+		for (int i = 0; i <= magicSquare[0].length - 1; i++) {
+			for (int j = 0; j <= magicSquare[0].length - 1; j++) {
+				System.out.print(magicSquare[i][j]);
+			}
+			System.out.println();
+		}
+	}
+
+	// 마방진 유효성 검증 메서드
+	static boolean checkSquare(int[][] magicSquare, int magicSum) {
+		// 구현 => 모든 행, 열, 대각선의 숫자 합이 동일하게 되는 배열을 말합니다.
+		int crossLeftSum = 0;
+		int crossRightSum = 0;
+
+		for (int i = 0; i <= magicSquare[0].length - 1; i++) {
+			int rowSum = 0;
+			int colSum = 0;
+			
+			for (int j = 0; j <= magicSquare[0].length - 1; j++) {
+				rowSum += magicSquare[i][j];
+				colSum += magicSquare[j][i];
+			}
+			if (rowSum != magicSum || colSum != magicSum) {
+				return false;
+			}
+
+			crossLeftSum += magicSquare[i][i];
+			crossRightSum += magicSquare[i][magicSquare[0].length - 1 - i];
+		}
+
+		return (crossLeftSum == magicSum && crossRightSum == magicSum);
+	}
 }
-

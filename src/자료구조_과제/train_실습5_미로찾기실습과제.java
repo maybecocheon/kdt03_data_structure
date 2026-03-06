@@ -16,48 +16,53 @@ class Items {//mouse의 현재 위치
 	int dir;
 
 }
-class Offsets {//바뀔 위치
+class Offsets {
+//바뀔 위치
 	int a;
 	int b;
-
+	
+	public Offsets(int i, int j) {
+		this.a = i;
+		this.b = j;
+	}
 }
 public class train_실습5_미로찾기실습과제 {
 
 	static Offsets[] moves = new Offsets[8];//static을 선언하는 이유를 알아야 한다
-	int maze[14][17]; // 양쪽으로 1씩 생기기 때문에 배열 인덱스값 2 증가함
-	int mark[14][17];
+	//int maze[14][17]; // 양쪽으로 1씩 생기기 때문에 배열 인덱스값 2 증가함
+	//int mark[14][17];
 
-	void path(int maze[][], int mark[][], int m, int p)//m = 12, p = 15
-	//출발점 (1,1), 이동 방향 dir = 2(2는 동쪽) 을 스택에 push
-	initialize stack to the maze entrance coordinates and direction east;
-	while (stack is not empty)
-	{
-	(i,j,dir) = coordinates and direction deleted from top of stack;
-	현재 위치 (i,j)에 대하여 mark[][]을 1로 설정
-	   while (there are more moves)//8가지 방향중에서 남은 방향에 대하여
-	   {
-	      (g,h) = coordinates of next move;//현재 위치 (i,j)에 대하여 이동 방향 계산
-	      if ((g == m) && (h == p)) {
-	//success;
-	(i,j)와 (g,h)에 대하여 mark 표시
-	return;
-	}
-	      if ((!maze[g][h]) //legal move
-	         && (!mark[g][h]) //haven't been here before
-	      {
-	         mark[g][h] = 1;
-	         dir = next direction to try;
-	         add (i,j,dir) to top of stack;
-	         i = g; j = h; dir = N;
-	      }
-	      else
-	          d++; //try next direction
-	   }
-	   //(i,j) 현위치에 대한 mark를 취소
-	}
-	cout << "No path found" << endl;
-
-	}
+//	void path(int maze[][], int mark[][], int m, int p)//m = 12, p = 15
+//	출발점 (1,1), 이동 방향 dir = 2(2는 동쪽) 을 스택에 push
+//	initialize stack to the maze entrance coordinates and direction east;
+//	while (stack is not empty)
+//	{
+//	(i,j,dir) = coordinates and direction deleted from top of stack;
+//	현재 위치 (i,j)에 대하여 mark[][]을 1로 설정
+//	   while (there are more moves)//8가지 방향중에서 남은 방향에 대하여
+//	   {
+//	      (g,h) = coordinates of next move;//현재 위치 (i,j)에 대하여 이동 방향 계산
+//	      if ((g == m) && (h == p)) {
+//	success;
+//	(i,j)와 (g,h)에 대하여 mark 표시
+//	return;
+//	}
+//	      if ((!maze[g][h]) //legal move
+//	         && (!mark[g][h]) //haven't been here before
+//	      {
+//	         mark[g][h] = 1;
+//	         dir = next direction to try;
+//	         add (i,j,dir) to top of stack;
+//	         i = g; j = h; dir = N;
+//	      }
+//	      else
+//	          d++; //try next direction
+//	   }
+//	   (i,j) 현위치에 대한 mark를 취소
+//	}
+//	cout << "No path found" << endl;
+//
+//	}
 
 	public static void main(String[] args) {
 		int[][] maze = new int[14][17];

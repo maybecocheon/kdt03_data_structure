@@ -39,12 +39,23 @@ K: 제거할 노드의 순서
 */
 
 class Node {
-	int id;
-	Node next; //next만 있으면 단방향
-	
+	private int id;
+	private Node next; // next만 있으면 단방향
+
 	Node(int id) {
 		this.id = id;
-		
+	}
+
+	public int getId() {
+		return this.id;
+	}
+
+	public void setNext(Node node) {
+		this.next = node;
+	}
+
+	public Node getNext() {
+		return this.next;
 	}
 }
 
@@ -53,7 +64,7 @@ class SinglyLinkedList {
 	// head -> null
 	// insertSorted(2)
 	// head -> 2 -> null
-	
+
 	// tail을 잘 다뤄야 함
 	// head -> 3 -> 5 -> 8
 	// insertSorted(2)
@@ -61,40 +72,87 @@ class SinglyLinkedList {
 	public void insertSorted(int id) {
 		// 연결리스트는 Node 생성 먼저 해야 함
 		Node newNode = new Node(id);
-		
+
 		// 1) head == null
 		// 2) 새 head가 기존의 head 앞에 위치
 		// 3) 중간 어딘가에 추가 (제일 끝도 포함)
+
+		// 1) 헤드의 next가 없을 때
+		if (head == null) {
+			this.head = newNode;
+			
+			// 2) 헤드의 next 있을 때
+		} else {
+			Node ptr = head;
+			Node prev = null;
+			boolean inserted = false;
+			while (ptr != null) {
+				if (ptr.getId() > id) {
+					if (prev == null) {
+						head = newNode;
+						newNode.setNext(ptr);
+					} else {
+						Node next = prev.getNext();
+						prev.setNext(newNode);
+						newNode.setNext(next);
+					}
+					inserted = true;
+					break;
+				}
+				
+				prev = ptr;
+				ptr = ptr.getNext();
+			}
+			if (!inserted) {
+				prev.setNext(newNode);
+				newNode.setNext(head);
+			}
+			// 3) 정렬 - newNode가 head 뒤에 올 때 (값이 제일 작을 때)
+			// 4) 정렬 - newNode가 중간에 있을 때
+		}
 	}
-	
+
 	public void showList() {
-		
+
 	}
 }
 
 public class train_실습8_01요세푸스문제_원형리스트 {
+
+//	public static void main(String[] args) {
+//		// 출력: 조세푸스(7, 3) 문제
+//		System.out.println("조세푸스 (7, 3)");
+//		int n = 7;
+//		int k = 3;
+//
+//		Random rd = new Random(42);
+//
+//		// index/itme(N개가 {Queue, LinkedList}에, K를 선택)
+//		// => 문제가 연결리스트로 풀라고 했으니 LinkedList로 풀기
+//		// singlyLinkedList = new singlyLinkendList(); => 노드를 핸들링하기 위한 것 => 즉 연결리스트 쓰려면
+//		// 노드부터 만들어야 됨
+//		SinglyLinkedList sll = new SinglyLinkedList();
+//
+//		// 1. for(int i = 0; i < N; i++) {/* id를 정렬해서 추가 */} => add 연습해 보라고 정렬하는 거임
+//		for (int i = 0; i < n; i++) {
+//			int id = rd.nextInt(1000) + 1;
+//			sll.insertSorted(id);
+//		}
+//		// 2. 제거 순서를 출력
+//		sll.showList();
+//
+//		// 3. item solve(K, N) {}
+//	}
 	
 	public static void main(String[] args) {
-		// 출력: 조세푸스(7, 3) 문제
-		System.out.println("조세푸스 (7, 3)");
-		int n = 7;
-		int k = 3;
-		
-		Random rd = new Random(42);
-		
-		// index/itme(N개가 {Queue, LinkedList}에, K를 선택)
-		// => 문제가 연결리스트로 풀라고 했으니 LinkedList로 풀기
-		// singlyLinkedList = new singlyLinkendList(); => 노드를 핸들링하기 위한 것 => 즉 연결리스트 쓰려면 노드부터 만들어야 됨
 		SinglyLinkedList sll = new SinglyLinkedList();
-		
-		// 1. for(int i = 0; i < N; i++) {/* id를 정렬해서 추가 */} => add 연습해 보라고 정렬하는 거임
-		for (int i = 0; i < n; i++) {
-			int id = rd.nextInt(1000) + 1;
-			sll.insertSorted(id);
-		}
+
+		sll.insertSorted(3);
+		sll.insertSorted(1);
+		sll.insertSorted(2);
 		// 2. 제거 순서를 출력
 		sll.showList();
-		
+
 		// 3. item solve(K, N) {}
 	}
 }

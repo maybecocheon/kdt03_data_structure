@@ -79,13 +79,13 @@ public class train_실습6_03_Merge정렬다항식 {
 		}
 		return terms;
 	}
-	static int addTerm(Term[] p, Term term, int currentTerms) {
-		//다항식 p에 새로운 항 term을 추가한다. 지수가 같은 항이 있으면 계수만 합한다
-		//추가된 항의 숫자를 리턴한다. 마지막 배열에 추가하므로 정렬이 되지 않는다.
-		//구현코드
-
-
-	}
+//	static int addTerm(Term[] p, Term term, int currentTerms) {
+//		//다항식 p에 새로운 항 term을 추가한다. 지수가 같은 항이 있으면 계수만 합한다
+//		//추가된 항의 숫자를 리턴한다. 마지막 배열에 추가하므로 정렬이 되지 않는다.
+//		//구현코드
+//
+//
+//	}
 	
 
 	static int MultiplyPolynomial(Term[] p1, Term[] p2, Term[] result) {
@@ -103,13 +103,13 @@ public class train_실습6_03_Merge정렬다항식 {
 		terms = 20;
 		return terms;
 	}
-	static double EvaluatePolynomial(Term[]p, int pTerms, double value) {
-		//pTerms는 다항식 p의 항의 수, value는 f(x)를 계산하기 위한 x 값
-		//다항식 계산 결과를 double로 리턴한다 
-		double result = 0.0;
-		//구현 코드
-
-	}
+//	static double EvaluatePolynomial(Term[]p, int pTerms, double value) {
+//		//pTerms는 다항식 p의 항의 수, value는 f(x)를 계산하기 위한 x 값
+//		//다항식 계산 결과를 double로 리턴한다 
+//		double result = 0.0;
+//		//구현 코드
+//
+//	}
 	public static void main(String[] args) {
 		Term[] p1 = {
 				new Term(1.5, 3),
