@@ -44,6 +44,7 @@ class Node {
 
 	Node(int id) {
 		this.id = id;
+		this.next = null;
 	}
 
 	public int getId() {
@@ -73,86 +74,96 @@ class SinglyLinkedList {
 		// 연결리스트는 Node 생성 먼저 해야 함
 		Node newNode = new Node(id);
 
-		// 1) head == null
-		// 2) 새 head가 기존의 head 앞에 위치
-		// 3) 중간 어딘가에 추가 (제일 끝도 포함)
-
-		// 1) 헤드의 next가 없을 때
+		// 1) 헤드의 next가 없을 때 (head == null)
 		if (head == null) {
-			this.head = newNode;
-			
-			// 2) 헤드의 next 있을 때
-		} else {
-			Node ptr = head;
-			Node prev = null;
-			boolean inserted = false;
-			while (ptr != null) {
-				if (ptr.getId() > id) {
-					if (prev == null) {
-						head = newNode;
-						newNode.setNext(ptr);
-					} else {
-						Node next = prev.getNext();
-						prev.setNext(newNode);
-						newNode.setNext(next);
-					}
-					inserted = true;
-					break;
-				}
-				
-				prev = ptr;
-				ptr = ptr.getNext();
-			}
-			if (!inserted) {
-				prev.setNext(newNode);
-				newNode.setNext(head);
-			}
-			// 3) 정렬 - newNode가 head 뒤에 올 때 (값이 제일 작을 때)
-			// 4) 정렬 - newNode가 중간에 있을 때
+			this.head = newNode; // newNode 참고하도록 함
+			newNode.setNext(newNode); // 원형 연결
+			return;
 		}
+		
+		// 2) 새 노드가 기존의 head 앞에 위치
+		if (id < head.getId()) {
+			// 마지막 노드를 찾아서 새 head와 연결해줘야 함
+			Node tail = head;
+			while (tail.getNext() != head) {
+				tail = tail.getNext();
+			}
+			newNode.setNext(head);
+			tail.setNext(newNode);
+			return;
+		}
+		
+		// 3) 중간 어딘가에 추가 (제일 끝도 포함)
+		Node prev = head;
+		Node ptr = head.getNext();
+		while (ptr != head && ptr.getId() < id) {
+			prev = ptr;
+			ptr = ptr.getNext();
+		}
+		// 삽입 실행
+		prev.setNext(newNode);
+		newNode.setNext(ptr);
 	}
 
 	public void showList() {
-
+		if (head == null) {
+			return;
+		}
+		
+		// 출력
+		Node ptr = head;
+		do {
+			System.out.println(ptr.getId());
+			ptr = ptr.getNext();
+		} while (ptr != head);
+	}
+	
+	public void solve(int n, int k) {
+		System.out.println("=== 제거 시작 ===");
+		Node ptr = head;
+		Node prev = null;
+		// 노드가 하나 남을 때까지 반복한다.
+		while (ptr != ptr.getNext()) {
+			int cnt = 0;
+			// K-1번 이동하여 제거 대상과 그 이전 노드를 찾는다.
+			while (cnt < k - 1) {
+				prev = ptr;
+				ptr = ptr.getNext();
+				cnt += 1;
+			}
+			System.out.println(ptr.getId());
+			prev.setNext(ptr.getNext());
+			ptr = ptr.getNext();
+		}
+		System.out.println("마지막 생존자: " + ptr.getId());
 	}
 }
 
 public class train_실습8_01요세푸스문제_원형리스트 {
-
-//	public static void main(String[] args) {
-//		// 출력: 조세푸스(7, 3) 문제
-//		System.out.println("조세푸스 (7, 3)");
-//		int n = 7;
-//		int k = 3;
-//
-//		Random rd = new Random(42);
-//
-//		// index/itme(N개가 {Queue, LinkedList}에, K를 선택)
-//		// => 문제가 연결리스트로 풀라고 했으니 LinkedList로 풀기
-//		// singlyLinkedList = new singlyLinkendList(); => 노드를 핸들링하기 위한 것 => 즉 연결리스트 쓰려면
-//		// 노드부터 만들어야 됨
-//		SinglyLinkedList sll = new SinglyLinkedList();
-//
-//		// 1. for(int i = 0; i < N; i++) {/* id를 정렬해서 추가 */} => add 연습해 보라고 정렬하는 거임
-//		for (int i = 0; i < n; i++) {
-//			int id = rd.nextInt(1000) + 1;
-//			sll.insertSorted(id);
-//		}
-//		// 2. 제거 순서를 출력
-//		sll.showList();
-//
-//		// 3. item solve(K, N) {}
-//	}
-	
 	public static void main(String[] args) {
+		// 출력: 조세푸스(7, 3) 문제
+		System.out.println("조세푸스 (7, 3)");
+		int n = 7;
+		int k = 3;
+
+		Random rd = new Random(42);
+
+		// index/itme(N개가 {Queue, LinkedList}에, K를 선택)
+		// => 문제가 연결리스트로 풀라고 했으니 LinkedList로 풀기
+		// singlyLinkedList = new singlyLinkendList(); => 노드를 핸들링하기 위한 것 => 즉 연결리스트 쓰려면
+		// 노드부터 만들어야 됨
 		SinglyLinkedList sll = new SinglyLinkedList();
 
-		sll.insertSorted(3);
-		sll.insertSorted(1);
-		sll.insertSorted(2);
+		// 1. for(int i = 0; i < N; i++) {/* id를 정렬해서 추가 */} => add 연습해 보라고 정렬하는 거임
+		for (int i = 0; i < n; i++) {
+			int id = rd.nextInt(1000) + 1;
+			sll.insertSorted(id);
+		}
 		// 2. 제거 순서를 출력
 		sll.showList();
 
 		// 3. item solve(K, N) {}
+		sll.solve(n, k);
 	}
+	
 }

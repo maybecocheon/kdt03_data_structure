@@ -2,6 +2,7 @@ package 자료구조_과제;
 
 import java.util.ArrayList;
 import java.util.Comparator;
+import java.util.EmptyStackException;
 import java.util.List;
 import java.util.Scanner;
 
@@ -17,16 +18,19 @@ class SimpleObject4 {
 	public String toString() {
 		return "(" + no + ") " + name;
 	}
+	// 오버로딩
 	public SimpleObject4() {
-		no = null;name = null;
+		no = null;
+		name = null;
 	}
 	public SimpleObject4(String no, String name) {
-		this.no = no;this.name = name;
+		this.no = no;
+		this.name = name;
 	}
 	// --- 데이터를 읽어 들임 ---//
 	void scanData(String guide, int sw) {
 		Scanner sc = new Scanner(System.in);
-		System.out.println(guide + "할 데이터를 입력하세요."+ sw);
+		System.out.println(guide + "할 데이터를 입력하세요. "+ sw);
 
 		if ((sw & NO) == NO) { //& 는 bit 연산자임
 			System.out.print("번호: ");
@@ -63,12 +67,16 @@ class ObjectStack4{
 	//--- 실행시 예외: 스택이 비어있음 ---//
 	// generic class는 Throwable을 상속받을 수 없다 - 지원하지 않는다
 	public class EmptyGenericStackException extends Exception {
-
+		if (data.length == 0) {
+			throw new EmptyStackException();
+		}
 	}
 
 	//--- 실행시 예외: 스택이 가득 참 ---//
 	public class OverflowGenericStackException extends RuntimeException {
-
+		if (data.length == capacity) {
+			throw new StackOverflowError();
+		}
 	}
 
 	private List<TreeNode4> data;  // list를 사용: 배열은 크기를 2배로 늘리는 작업 필요 
@@ -78,13 +86,12 @@ class ObjectStack4{
 
 	//--- 생성자(constructor) ---//
 	public ObjectStack4(int capacity) {
-
+		this.capacity = capacity;
 	}
 
 	//--- 스택에 x를 푸시 ---//
 	public boolean push(TreeNode4 x) throws OverflowGenericStackException {
-
-
+		this.data.add(x)
 	}
 
 	//--- 스택에서 데이터를 팝(정상에 있는 데이터를 꺼냄) ---//
